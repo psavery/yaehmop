@@ -43,44 +43,44 @@ all: bind
 
 
 bind: $(COBJS) $(FOBJS) $(LAPACKOBJS)
-	cc -o bind $(CFLAGS) $(COBJS) $(FOBJS)  $(LAPACKOBJS) $(LIBS) $(LOCALLIBS)
+        cc -o bind $(CFLAGS) $(COBJS) $(FOBJS)  $(LAPACKOBJS) $(LIBS) $(LOCALLIBS)
 
 bind.64: $(COBJS) $(FOBJS) $(LAPACKOBJS)
-	cc -o bind.64 $(CFLAGS) $(COBJS) $(FOBJS) $(LAPACKOBJS) $(LIBS)
+        cc -o bind.64 $(CFLAGS) $(COBJS) $(FOBJS) $(LAPACKOBJS) $(LIBS)
 
 install: bind 
-	cp bind ../bin
-	cd utils;make install
+        cp bind ../bin
+        cd utils;make install
 
 install64: bind.64
-	cp bind.64 ../bin
+        cp bind.64 ../bin
 
 clean:
-	rm -f $(COBJS) $(FOBJS)
+        rm -f $(COBJS) $(FOBJS)
 
 
 veryclean:
-	rm -f bind bind.64
-	rm -f $(COBJS) $(FOBJS) $(LAPACKOBJS)
-	cd utils;make clean
+        rm -f bind bind.64
+        rm -f $(COBJS) $(FOBJS) $(LAPACKOBJS)
+        cd utils;make clean
 
 .f.o: 
-	f77 $(F77FLAGS) -c $*.f
+        f77 $(F77FLAGS) -c $*.f
 
 .c.o: 
-	cc $(CFLAGS) -c $*.c
+        cc $(CFLAGS) -c $*.c
 
 
 fit_progs: $(FIT_PROGS)
 
 utils/fit_dos: utils/fit_dos.c
-	cd utils; make fit_dos
+        cd utils; make fit_dos
 
 utils/fit_coop: utils/fit_coop.c
-	cd utils; make fit_coop
+        cd utils; make fit_coop
 
 utils/fit_walsh: utils/fit_walsh.c
-	cd utils; make fit_walsh
+        cd utils; make fit_walsh
 
 utils/sub_dos: utils/sub_dos.c
-	cd utils; make sub_dos
+        cd utils; make sub_dos

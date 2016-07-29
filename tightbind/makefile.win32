@@ -42,24 +42,24 @@ all: $(PROG)
 
 
 $(PROG): $(COBJS) $(FOBJS) $(LAPACKOBJS)
-	$(CC) -o $(PROG) $(CFLAGS) $(COBJS) $(FOBJS)  $(LAPACKOBJS) $(LIBS) $(LOCALLIBS)
+        $(CC) -o $(PROG) $(CFLAGS) $(COBJS) $(FOBJS)  $(LAPACKOBJS) $(LIBS) $(LOCALLIBS)
 
 install: $(PROG) 
-	cp $(PROG) ../bin
-	cd utils;make -f makefile.win32 install
+        cp $(PROG) ../bin
+        cd utils;make -f makefile.win32 install
 
 clean:
-	rm -f $(COBJS) $(FOBJS)
+        rm -f $(COBJS) $(FOBJS)
 
 
 veryclean:
-	rm -f $(PROG)
-	rm -f $(COBJS) $(FOBJS) $(LAPACKOBJS)
-	cd utils;make clean
+        rm -f $(PROG)
+        rm -f $(COBJS) $(FOBJS) $(LAPACKOBJS)
+        cd utils;make clean
 
 .f.o: 
-	$(F77) $(F77FLAGS) -c $*.f
+        $(F77) $(F77FLAGS) -c $*.f
 
 .c.o: 
-	$(CC) $(CFLAGS) -c $*.c
+        $(CC) $(CFLAGS) -c $*.c
 
