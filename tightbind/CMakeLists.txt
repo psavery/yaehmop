@@ -91,10 +91,10 @@ add_definitions(-DEHT_PARM_FILE=\"${PARM_FILE_LOC}\")
 add_definitions(-DUNDERSCORE_FORTRAN)
 
 # Add the executable and link to the C math library
-add_executable(bind ${YAEHMOP_SRCS})
-target_link_libraries(bind m)
+add_executable(yaehmop ${YAEHMOP_SRCS})
+target_link_libraries(yaehmop m)
 
 # If we are using F2C, we have to link to the library
 if(USE_F2C)
-  target_link_libraries(bind ${F2C_LIB})
+  target_link_libraries(yaehmop ${F2C_LIB})
 endif(USE_F2C)
