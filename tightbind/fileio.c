@@ -2032,8 +2032,8 @@ done.\n");
                          }
 
         fprintf(status_file,"An automatic k-point mesh (%dx%dx%d) will be used.\n",
-                &(details->points_per_axis[0]),&(details->points_per_axis[1]),
-                &(details->points_per_axis[2]));
+                details->points_per_axis[0],details->points_per_axis[1],
+                details->points_per_axis[2]);
       }
       /*----------------------------------------------------------------------*/
       else if( strstr(instring,"HIGH SYMM")){
@@ -2374,7 +2374,7 @@ calculation.\n");
         /* read in the special points */
         for(i=0;i<band_info->num_special_points;i++){
           skipcomments(infile,instring,FATAL);
-          sscanf(instring,"%s %lf %lf %lf",&band_info->special_points[i].name,
+          sscanf(instring,"%s %lf %lf %lf",band_info->special_points[i].name,
                  &band_info->special_points[i].loc.x,
                  &band_info->special_points[i].loc.y,
                  &band_info->special_points[i].loc.z);
