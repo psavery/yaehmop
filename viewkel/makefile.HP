@@ -56,22 +56,22 @@ VIS5DOBJS =
 CC = cc
 
 viewkel:  $(OBJS)
-        $(CC) -o viewkel $(CFLAGS) $(OBJS) $(VIS5DOBJS) $(HDFLIB) $(LDFLAGS) \
+	$(CC) -o viewkel $(CFLAGS) $(OBJS) $(VIS5DOBJS) $(HDFLIB) $(LDFLAGS) \
 -lm -lX11
 
 install: viewkel
-        cp viewkel ../bin
+	cp viewkel ../bin
 
 
 test: main.o genutil.o globals.o xstuff.o
-        $(CC) -o test $(CFLAGS) main.o genutil.o globals.o xstuff.o -lm -lX11
+	$(CC) -o test $(CFLAGS) main.o genutil.o globals.o xstuff.o -lm -lX11
 
 #buttons.o: button.h
-#        $(CC) $(CFLAGS) -c buttons.c
+#	$(CC) $(CFLAGS) -c buttons.c
 
 .c.o: viewkel.h
-        $(CC) $(CFLAGS) $(VIS5DINCLUDEFLAGS) $(HDFINCLUDEFLAGS) -c $*.c
+	$(CC) $(CFLAGS) $(VIS5DINCLUDEFLAGS) $(HDFINCLUDEFLAGS) -c $*.c
 
 clean:
-        rm -f *.o; rm -f viewkel;
+	rm -f *.o; rm -f viewkel;
 

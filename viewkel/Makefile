@@ -30,16 +30,16 @@ CC = gcc
 
 
 viewkel:  $(OBJS)
-        $(CC) -o viewkel $(CFLAGS) $(OBJS) $(LDFLAGS) \
+	$(CC) -o viewkel $(CFLAGS) $(OBJS) $(LDFLAGS) \
 -lm -lX11
 
 install: viewkel
-        cp viewkel ../bin
+	cp viewkel ../bin
 
 .c.o: viewkel.h
-        $(CC) $(CFLAGS) -c $*.c
+	$(CC) $(CFLAGS) -c $*.c
 
 
 clean:
-        rm -f *.o; rm -f viewkel;
+	rm -f *.o; rm -f viewkel;
 

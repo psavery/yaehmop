@@ -87,43 +87,43 @@ all: bind $(FIT_PROGS)
 
 
 #bind: $(COBJS) $(FOBJS)
-#        cc -o bind $(CFLAGS) $(COBJS) $(FOBJS) $(LIBS)
+#	cc -o bind $(CFLAGS) $(COBJS) $(FOBJS) $(LIBS)
 
 bind: $(COBJS) $(FOBJS) $(LAPACKOBJS)
-        $(F77) -o bind $(LFLAGS) $(COBJS) $(FOBJS)  $(LAPACKOBJS) $(LIBS)
+	$(F77) -o bind $(LFLAGS) $(COBJS) $(FOBJS)  $(LAPACKOBJS) $(LIBS)
 
 #bind.64: $(COBJS) $(FOBJS)
-#        cc -o bind.64 $(CFLAGS) $(COBJS) $(FOBJS) $(LIBS)
+#	cc -o bind.64 $(CFLAGS) $(COBJS) $(FOBJS) $(LIBS)
 
 bind.64: $(COBJS) $(FOBJS) $(LAPACKOBJS)
-        cc -o bind.64 $(CFLAGS) $(COBJS) $(FOBJS) $(LAPACKOBJS) $(LIBS)
+	cc -o bind.64 $(CFLAGS) $(COBJS) $(FOBJS) $(LAPACKOBJS) $(LIBS)
 
 
 clean:
-        rm -f $(COBJS)
+	rm -f $(COBJS)
 
 veryclean:
-        rm -f bind bind.64
-        rm -f $(COBJS) $(FOBJS) $(LAPACKOBJS)
+	rm -f bind bind.64
+	rm -f $(COBJS) $(FOBJS) $(LAPACKOBJS)
 
 
 .f.o: 
-        $(F77) $(F77FLAGS) -c $*.f
+	$(F77) $(F77FLAGS) -c $*.f
 
 .c.o: 
-        $(CC) $(CFLAGS) -c $*.c
+	$(CC) $(CFLAGS) -c $*.c
 
 
 fit_progs: $(FIT_PROGS)
 
 utils/fit_dos: utils/fit_dos.c
-        cd utils; make fit_dos
+	cd utils; make fit_dos
 
 utils/fit_coop: utils/fit_coop.c
-        cd utils; make fit_coop
+	cd utils; make fit_coop
 
 utils/fit_walsh: utils/fit_walsh.c
-        cd utils; make fit_walsh
+	cd utils; make fit_walsh
 
 utils/sub_dos: utils/sub_dos.c
-        cd utils; make sub_dos
+	cd utils; make sub_dos
