@@ -218,11 +218,11 @@ void write_atom_coords(atom_type *atoms,int num_atoms,
   for(i=0;i<num_atoms;i++){
     /* write the parameters */
     if( !using_Zmat ){
-      fprintf(output_file,"% 4d % 4s % -8.6f % -8.6f % -8.6f\n",
+      fprintf(output_file,"%4d %4s %-8.6f %-8.6f %-8.6f\n",
               i+1,atoms[i].symb,atoms[i].loc.x,atoms[i].loc.y,atoms[i].loc.z);
     }
     else{
-      fprintf(output_file,"% 4d % 4s % 4d % -8.6f % 4d % -8.6f % 4d % 8.6f\n",
+      fprintf(output_file,"%4d %4s %4d %-8.6f %4d %-8.6f %4d %8.6f\n",
               i+1,atoms[i].symb,
               atoms[i].Zmat_loc.ref1+1,atoms[i].Zmat_loc.bond_length,
               atoms[i].Zmat_loc.ref2+1,atoms[i].Zmat_loc.alpha,
