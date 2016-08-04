@@ -111,12 +111,9 @@ char test_string[80];
     exit(-1);
   }
 
-  // The user may have added some options
-  if ( argc > 2) {
-    if (strcmp(argv[2], "--use_stdin_stdout") == 0) {
-      use_stdin_stdout = true;
-    }
-  }
+  // If the argument is --use_stin_stdout, use stdin and stdout! Makes sense...
+  if (strcmp(argv[1], "--use_stdin_stdout") == 0)
+    use_stdin_stdout = true;
 
   /* install the sig_int handler */
   signal(SIGINT,handle_sigint);
@@ -134,13 +131,15 @@ char test_string[80];
   details = (detail_type *)calloc(1,sizeof(detail_type));
   if(!unit_cell || !details) fatal("Can't allocate initial memory.");
 
-  /* check to see if we can open the input file */
-  temp_file = fopen(argv[1],"r");
-  if( !temp_file ){
-    sprintf(err_string,"Can't open input file: %s",argv[1]);
-    fatal(err_string);
+  if (!use_stdin_stdout) {
+    /* check to see if we can open the input file */
+    temp_file = fopen(argv[1],"r");
+    if( !temp_file ){
+      sprintf(err_string,"Can't open input file: %s",argv[1]);
+      fatal(err_string);
+    }
+    fclose(temp_file);
   }
-  fclose(temp_file);
 
   // If we are using stdin and stdout, then write all status to stdout
   if (use_stdin_stdout) {
@@ -175,7 +174,10 @@ char test_string[80];
     read in the data
 
   *********/
-  read_inputfile(unit_cell,details,argv[1],&num_orbs,&orbital_lookup_table,the_file);
+  char* fileName = argv[1];
+  if (use_stdin_stdout)
+    fileName = "stdin";
+  read_inputfile(unit_cell,details,fileName,&num_orbs,&orbital_lookup_table,the_file);
 
   /* copy the file name into the details structure */
   strcpy(details->filename,argv[1]);
